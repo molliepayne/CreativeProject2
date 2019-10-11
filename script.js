@@ -25,9 +25,9 @@ var myurl = "https://api.instagram.com/v1/users/16597939728/media/recent?access_
            let caption = json.data[i].caption.text;
            let truncCaption = caption.substr(0, 40) + "...";
         	 results +=  "<div class=\"col-sm-4\">";
-        	 results += newDay +"<figure> <a href=\"" +json.data[i].link;
+        	 results += "<div class='insta'>" + newDay +"</div> <figure> <a href=\"" +json.data[i].link;
         	 results +="\"> <img alt=\"" + truncCaption +"\" src=\"" + json.data[i].images.low_resolution.url +"\">";
-        	 results+="</a> <figcaption>"+ truncCaption +"</figcaption></figure></div>";
+        	 results+="</a> <figcaption class=\"insta\">"+ truncCaption +"</figcaption></figure></div>";
   	     /* if (i===18)
   	      { results += "</div> <!--Grid column--><div class=\"col-lg-4 col-md-6 mb-4\">";
             i=-2;

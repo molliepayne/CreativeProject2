@@ -8,6 +8,7 @@
 html
 {
     height: 100%;
+    font-family: 'Quicksand', serif;
 }
 
 body 
@@ -25,6 +26,9 @@ body
     text-indent: 20px;
     color: #000000;
    
+}
+.insta{
+    font-family: 'Quicksand', sans-serif;
 }
 .navbar-nav
 {
