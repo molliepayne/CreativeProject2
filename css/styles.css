@@ -97,11 +97,29 @@ ul li ul li {
     clear: both;
   width: 100%;
 }
+.fade {
+   opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   }
+
+   img:hover {
+      opacity: 0.5;
+      }
 
 .parallax 
 {
   /* The image used */
-  background-image: url("../images/snaps detail 2.JPG");
+  background: 
+    
+    linear-gradient(
+      rgba(255, 255, 255, 0.3), 
+      rgba(255, 255, 255, 0.3)
+    ),
+    /* bottom, image */
+    url("../images/snaps detail 2.JPG");
+ 
 
   /* Set a specific height */
   min-height: 200px; 
@@ -138,7 +156,7 @@ h1 {
 
     text-indent: 20px;
     color: #FFFFFF;
-    text-shadow: 4px 4px 4px #aaa;
+    text-shadow: 4px 4px 4px #000000;
 
 
 }

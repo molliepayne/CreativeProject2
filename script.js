@@ -11,25 +11,35 @@ var myurl = "https://api.instagram.com/v1/users/16597939728/media/recent?access_
       return response.json();
     }).then(function(json) {
       console.log(json);
-      var results = "<h2>Click any image below to go to our Instagram post!  This is where we keep a record of what is happening in the garden.</h2><hr> <!--Grid row--> <div class=\"row\"><!--Grid column--><div class=\"col-lg-4 col-md-6 mb-4\">";
-       for (let i=0; i < json.data.length; i+=3) {
-         console.log("i: " + i);
-         
+      var results = "<hr><h2>Click any image below to go to our Instagram post!  This is where we keep a record of what's happening at the farm.</h2>";
+      results+="<hr>";
+       //go through each image and display it
+       for (let i=0; i < json.data.length; i++) {
+         console.log("i %3: " + i%3);
+          if(i%3===0)
+            {
+              results+="</div><div class=row>"
+            }
            var date = new Date(json.data[i].caption.created_time * 1000); 
            let newDay = moment(date).format('MMMM Do YYYY');
-        	 results +=  newDay + "<a href=\"" + json.data[i].link + "\"> <figure><img alt=\""+ json.data[i].caption.text +"\" src="+ json.data[i].images.low_resolution.url +" class=\"img-fluid mb-4\" alt=\"8544\" data-wow-delay=\"0.2s\"></a><figcaption>"+ json.data[i].caption.text +"</figcaption></figure>";
-	      if (i===18)
-	      { results += "</div> <!--Grid column--><div class=\"col-lg-4 col-md-6 mb-4\">";
-          i=-2;
-	      }
-        if (i===19)
-        { results += "</div> <!--Grid column--><div class=\"col-lg-4 col-md-6 mb-4\">";
-          i = -1;
+           let caption = json.data[i].caption.text;
+           let truncCaption = caption.substr(0, 40) + "...";
+        	 results +=  "<div class=\"col-sm-4\">";
+        	 results += newDay +"<figure> <a href=\"" +json.data[i].link;
+        	 results +="\"> <img alt=\"" + truncCaption +"\" src=\"" + json.data[i].images.low_resolution.url +"\">";
+        	 results+="</a> <figcaption>"+ truncCaption +"</figcaption></figure></div>";
+  	     /* if (i===18)
+  	      { results += "</div> <!--Grid column--><div class=\"col-lg-4 col-md-6 mb-4\">";
+            i=-2;
+  	      }
+          if (i===19)
+          { results += "</div> <!--Grid column--><div class=\"col-lg-4 col-md-6 mb-4\">";
+            i = -1;
+          }*/
         }
-      }
       results += "</div>";
       console.log(results);
-       document.getElementById("instafeed").innerHTML = results;
+      document.getElementById("instafeed").innerHTML = results;
       /*
     <div class="col-lg-4 col-md-12 mb-4">
 
